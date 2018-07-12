@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.xueqing.demo</groupId>
-    <artifactId>springdubbo</artifactId>
+    <artifactId>SpringDubboDemo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>springdubbo</name>
+    <name>SpringDubboDemo</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
