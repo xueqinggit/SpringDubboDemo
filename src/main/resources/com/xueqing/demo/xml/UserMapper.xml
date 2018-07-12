@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xueqing.demo.springdubbo.dao.UserDao">
+    <select id="getUsers" resultType="com.xueqing.demo.springdubbo.entity.User">
+        select *  from user
+    </select>
+    
+    <select id="findUserById" resultType="com.xueqing.demo.springdubbo.entity.User">
+        select *  from user where id = #{id}
+    </select>
+    
+    <delete id="deleteUserById">
+        delete from user where id = #{id}
+    </delete>
+
+
+    <!-- 根据用户名获取用户实体类-->
+    <select id="getUserByUsername"  resultType="com.xueqing.demo.springdubbo.entity.User">
+    SELECT * FROM USER
+    WHERE username=#{username};
+  </select>
+
+    <!--判断用户名和密码是否正确-->
+    <select id="checkUser"  resultType="Integer">
+    SELECT count(*) FROM USER
+    WHERE username=#{username} and password=#{password};
+  </select>
+</mapper>
