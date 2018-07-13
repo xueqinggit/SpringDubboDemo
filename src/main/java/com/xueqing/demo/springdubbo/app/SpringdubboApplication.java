@@ -1,12 +1,16 @@
 package com.xueqing.demo.springdubbo.app;
 
 import com.xueqing.demo.springdubbo.utils.SpringUtil;
+import org.apache.coyote.http11.AbstractHttp11Protocol;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.embedded.tomcat.TomcatConnectorCustomizer;
+import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -26,4 +30,18 @@ public class SpringdubboApplication {
         ConfigurableApplicationContext context = SpringApplication.run(SpringdubboApplication.class, args);
         SpringUtil.setApplicationContext(context);
     }
+
+    //Tomcat large file upload connection reset
+    @Bean
+    public TomcatEmbeddedServletContainerFactory tomcatEmbedded() {
+        TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory();
+        tomcat.addConnectorCustomizers((TomcatConnectorCustomizer) connector -> {
+            if ((connector.getProtocolHandler() instanceof AbstractHttp11Protocol<?>)) {
+                //-1 means unlimited
+                ((AbstractHttp11Protocol<?>) connector.getProtocolHandler()).setMaxSwallowSize(-1);
+            }
+        });
+        return tomcat;
+    }
+
 }
