@@ -1,5 +1,6 @@
 package com.xueqing.demo.springdubbo.service.impl;
 
+import com.xueqing.demo.springdubbo.dao.ModuleMapper;
 import com.xueqing.demo.springdubbo.dao.RoleDao;
 import com.xueqing.demo.springdubbo.dao.UserDao;
 import com.xueqing.demo.springdubbo.entity.Module;
@@ -28,6 +29,9 @@ public class UserServiceImpl  implements UserService {
     @Autowired
     UserDao userDao;
 
+    @Autowired
+    ModuleMapper moduleMapper;
+
 
     @Autowired
     private CacheManager cacheManager;
@@ -46,6 +50,7 @@ public class UserServiceImpl  implements UserService {
     @Override
     @Cacheable(value = CACHE_KEY, key = "#id")
     public User findUserById(String id) {
+        Module module = moduleMapper.selectByPrimaryKey(1);
         return userDao.findUserById(id);
     }
 
