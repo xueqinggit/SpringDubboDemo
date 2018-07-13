@@ -1,18 +1,10 @@
 package com.xueqing.demo.springdubbo.controller;
 
-import com.mongodb.gridfs.GridFS;
-import com.mongodb.gridfs.GridFSDBFile;
-import com.xueqing.demo.springdubbo.entity.Email;
 import com.xueqing.demo.springdubbo.entity.Result;
-import com.xueqing.demo.springdubbo.service.IMailService;
 import com.xueqing.demo.springdubbo.service.MongoService;
-import com.xueqing.demo.springdubbo.service.impl.MongoServiceImpl;
-import com.xueqing.demo.springdubbo.utils.MongoDBUtils;
-import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

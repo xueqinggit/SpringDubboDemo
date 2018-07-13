@@ -1,12 +1,13 @@
-package com.xueqing.demo.springdubbo.intercept;
+package com.xueqing.demo.springdubbo.config;
 
+import com.xueqing.demo.springdubbo.intercept.MyIntercept;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
-public class SpringInterceptorRegister extends WebMvcConfigurerAdapter {
+public class InterceptorConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
