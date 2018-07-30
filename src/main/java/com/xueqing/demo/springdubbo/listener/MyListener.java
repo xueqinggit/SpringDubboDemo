@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import javax.servlet.http.HttpSessionListener;
+
 /**
  * 自定义Listener
  * XueQing Wang

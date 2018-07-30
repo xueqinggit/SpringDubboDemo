@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xueqing.demo.springdubbo.dao.TrsPermissionsMapper" >
+  <resultMap id="BaseResultMap" type="com.xueqing.demo.springdubbo.entity.TrsPermissions" >
+    <id column="transactionid" property="transactionid" jdbcType="VARCHAR" />
+    <result column="transactionname" property="transactionname" jdbcType="VARCHAR" />
+    <result column="registerflag" property="registerflag" jdbcType="VARCHAR" />
+    <result column="t_staticrules" property="tStaticrules" jdbcType="VARCHAR" />
+    <result column="s_staticrules" property="sStaticrules" jdbcType="VARCHAR" />
+    <result column="r_staticrules" property="rStaticrules" jdbcType="VARCHAR" />
+    <result column="t_dynamicrules" property="tDynamicrules" jdbcType="VARCHAR" />
+    <result column="s_dynamicrules" property="sDynamicrules" jdbcType="VARCHAR" />
+    <result column="r_dynamicrules" property="rDynamicrules" jdbcType="VARCHAR" />
+    <result column="minversion" property="minversion" jdbcType="VARCHAR" />
+    <result column="maxversionpass" property="maxversionpass" jdbcType="VARCHAR" />
+    <result column="enable" property="enable" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    transactionid, transactionname, registerflag, t_staticrules, s_staticrules, r_staticrules, 
+    t_dynamicrules, s_dynamicrules, r_dynamicrules, minversion, maxversionpass, enable
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from trspermissions
+    where transactionid = #{transactionid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from trspermissions
+    where transactionid = #{transactionid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xueqing.demo.springdubbo.entity.TrsPermissions" >
+    insert into trspermissions (transactionid, transactionname, registerflag, 
+      t_staticrules, s_staticrules, r_staticrules, 
+      t_dynamicrules, s_dynamicrules, r_dynamicrules, 
+      minversion, maxversionpass, enable
+      )
+    values (#{transactionid,jdbcType=VARCHAR}, #{transactionname,jdbcType=VARCHAR}, #{registerflag,jdbcType=VARCHAR}, 
+      #{tStaticrules,jdbcType=VARCHAR}, #{sStaticrules,jdbcType=VARCHAR}, #{rStaticrules,jdbcType=VARCHAR}, 
+      #{tDynamicrules,jdbcType=VARCHAR}, #{sDynamicrules,jdbcType=VARCHAR}, #{rDynamicrules,jdbcType=VARCHAR}, 
+      #{minversion,jdbcType=VARCHAR}, #{maxversionpass,jdbcType=VARCHAR}, #{enable,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xueqing.demo.springdubbo.entity.TrsPermissions" >
+    insert into trspermissions
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="transactionid != null" >
+        transactionid,
+      </if>
+      <if test="transactionname != null" >
+        transactionname,
+      </if>
+      <if test="registerflag != null" >
+        registerflag,
+      </if>
+      <if test="tStaticrules != null" >
+        t_staticrules,
+      </if>
+      <if test="sStaticrules != null" >
+        s_staticrules,
+      </if>
+      <if test="rStaticrules != null" >
+        r_staticrules,
+      </if>
+      <if test="tDynamicrules != null" >
+        t_dynamicrules,
+      </if>
+      <if test="sDynamicrules != null" >
+        s_dynamicrules,
+      </if>
+      <if test="rDynamicrules != null" >
+        r_dynamicrules,
+      </if>
+      <if test="minversion != null" >
+        minversion,
+      </if>
+      <if test="maxversionpass != null" >
+        maxversionpass,
+      </if>
+      <if test="enable != null" >
+        enable,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="transactionid != null" >
+        #{transactionid,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionname != null" >
+        #{transactionname,jdbcType=VARCHAR},
+      </if>
+      <if test="registerflag != null" >
+        #{registerflag,jdbcType=VARCHAR},
+      </if>
+      <if test="tStaticrules != null" >
+        #{tStaticrules,jdbcType=VARCHAR},
+      </if>
+      <if test="sStaticrules != null" >
+        #{sStaticrules,jdbcType=VARCHAR},
+      </if>
+      <if test="rStaticrules != null" >
+        #{rStaticrules,jdbcType=VARCHAR},
+      </if>
+      <if test="tDynamicrules != null" >
+        #{tDynamicrules,jdbcType=VARCHAR},
+      </if>
+      <if test="sDynamicrules != null" >
+        #{sDynamicrules,jdbcType=VARCHAR},
+      </if>
+      <if test="rDynamicrules != null" >
+        #{rDynamicrules,jdbcType=VARCHAR},
+      </if>
+      <if test="minversion != null" >
+        #{minversion,jdbcType=VARCHAR},
+      </if>
+      <if test="maxversionpass != null" >
+        #{maxversionpass,jdbcType=VARCHAR},
+      </if>
+      <if test="enable != null" >
+        #{enable,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xueqing.demo.springdubbo.entity.TrsPermissions" >
+    update trspermissions
+    <set >
+      <if test="transactionname != null" >
+        transactionname = #{transactionname,jdbcType=VARCHAR},
+      </if>
+      <if test="registerflag != null" >
+        registerflag = #{registerflag,jdbcType=VARCHAR},
+      </if>
+      <if test="tStaticrules != null" >
+        t_staticrules = #{tStaticrules,jdbcType=VARCHAR},
+      </if>
+      <if test="sStaticrules != null" >
+        s_staticrules = #{sStaticrules,jdbcType=VARCHAR},
+      </if>
+      <if test="rStaticrules != null" >
+        r_staticrules = #{rStaticrules,jdbcType=VARCHAR},
+      </if>
+      <if test="tDynamicrules != null" >
+        t_dynamicrules = #{tDynamicrules,jdbcType=VARCHAR},
+      </if>
+      <if test="sDynamicrules != null" >
+        s_dynamicrules = #{sDynamicrules,jdbcType=VARCHAR},
+      </if>
+      <if test="rDynamicrules != null" >
+        r_dynamicrules = #{rDynamicrules,jdbcType=VARCHAR},
+      </if>
+      <if test="minversion != null" >
+        minversion = #{minversion,jdbcType=VARCHAR},
+      </if>
+      <if test="maxversionpass != null" >
+        maxversionpass = #{maxversionpass,jdbcType=VARCHAR},
+      </if>
+      <if test="enable != null" >
+        enable = #{enable,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where transactionid = #{transactionid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xueqing.demo.springdubbo.entity.TrsPermissions" >
+    update trspermissions
+    set transactionname = #{transactionname,jdbcType=VARCHAR},
+      registerflag = #{registerflag,jdbcType=VARCHAR},
+      t_staticrules = #{tStaticrules,jdbcType=VARCHAR},
+      s_staticrules = #{sStaticrules,jdbcType=VARCHAR},
+      r_staticrules = #{rStaticrules,jdbcType=VARCHAR},
+      t_dynamicrules = #{tDynamicrules,jdbcType=VARCHAR},
+      s_dynamicrules = #{sDynamicrules,jdbcType=VARCHAR},
+      r_dynamicrules = #{rDynamicrules,jdbcType=VARCHAR},
+      minversion = #{minversion,jdbcType=VARCHAR},
+      maxversionpass = #{maxversionpass,jdbcType=VARCHAR},
+      enable = #{enable,jdbcType=VARCHAR}
+    where transactionid = #{transactionid,jdbcType=VARCHAR}
+  </update>
+</mapper>
